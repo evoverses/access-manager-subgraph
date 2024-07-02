@@ -1,26 +1,146 @@
 {
-  "goerli": {
+  "mainnet": {
     "AccessManager": {
-      "startBlock": 9811500
+      "startBlock": 18270000
     },
     "AccessManaged": {
-      "startBlock": 9811500
+      "startBlock": 18270000
     }
   },
   "sepolia": {
     "AccessManager": {
-      "startBlock": 4425112
+      "startBlock": 36000000
     },
     "AccessManaged": {
-      "startBlock": 4425112
+      "startBlock": 36000000
     }
   },
-  "mainnet": {
+  "optimism": {
     "AccessManager": {
-      "startBlock": 18279121
+      "startBlock": 36000000
     },
     "AccessManaged": {
-      "startBlock": 18279121
+      "startBlock": 36000000
+    }
+  },
+  "optimism-sepolia": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "bsc": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "chapel": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "matic": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "fantom": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "arbitrum-one": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "fuji": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "avalanche": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "base": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "base-sepolia": {
+    "AccessManager": {
+      "startBlock": 300000
+    },
+    "AccessManaged": {
+      "startBlock": 300000
+    }
+  },
+  "polygon-zkevm": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "arbitrum-sepolia": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "blast-mainnet": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "blast-testnet": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
+    }
+  },
+  "polygon-amoy": {
+    "AccessManager": {
+      "startBlock": 36000000
+    },
+    "AccessManaged": {
+      "startBlock": 36000000
     }
   }
 }

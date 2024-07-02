@@ -4,10 +4,10 @@ schema:
 dataSources:
   - kind: ethereum
     name: AccessManager
-    network: mainnet
+    network: base-sepolia
     source:
       abi: AccessManager
-      startBlock: 18279121
+      startBlock: 300000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -27,7 +27,7 @@ dataSources:
         - TargetFunctionRoleUpdated
       abis:
         - name: AccessManager
-          file: AccessManager/abis/AccessManager.json
+          file: AccessManager\abis\AccessManager.json
       eventHandlers:
         - event: OperationCanceled(indexed bytes32,indexed uint32)
           handler: handleOperationCanceled
@@ -53,13 +53,13 @@ dataSources:
           handler: handleTargetClosed
         - event: TargetFunctionRoleUpdated(indexed address,bytes4,indexed uint64)
           handler: handleTargetFunctionRoleUpdated
-      file: AccessManager/AccessManager.wasm
+      file: AccessManager\AccessManager.wasm
   - kind: ethereum
     name: AccessManaged
-    network: mainnet
+    network: base-sepolia
     source:
       abi: AccessManaged
-      startBlock: 18279121
+      startBlock: 300000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -68,8 +68,8 @@ dataSources:
         - AuthorityUpdated
       abis:
         - name: AccessManaged
-          file: AccessManaged/abis/AccessManaged.json
+          file: AccessManaged\abis\AccessManaged.json
       eventHandlers:
         - event: AuthorityUpdated(address)
           handler: handleAuthorityUpdated
-      file: AccessManaged/AccessManaged.wasm
+      file: AccessManaged\AccessManaged.wasm
