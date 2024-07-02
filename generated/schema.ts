@@ -8,7 +8,7 @@ import {
   store,
   Bytes,
   BigInt,
-  BigDecimal
+  BigDecimal,
 } from "@graphprotocol/graph-ts";
 
 export class Account extends Entity {
@@ -23,7 +23,7 @@ export class Account extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type Account must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type Account must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("Account", id.toBytes().toHexString(), this);
     }
@@ -31,7 +31,7 @@ export class Account extends Entity {
 
   static loadInBlock(id: Bytes): Account | null {
     return changetype<Account | null>(
-      store.get_in_block("Account", id.toHexString())
+      store.get_in_block("Account", id.toHexString()),
     );
   }
 
@@ -89,222 +89,184 @@ export class Account extends Entity {
   get membership(): AccessManagerRoleMemberLoader {
     return new AccessManagerRoleMemberLoader(
       "Account",
-      this.get("id")!.toString(),
-      "membership"
+      this.get("id")!.toBytes().toHexString(),
+      "membership",
     );
   }
 
   get targettedBy(): AccessManagerTargetLoader {
     return new AccessManagerTargetLoader(
       "Account",
-      this.get("id")!.toString(),
-      "targettedBy"
+      this.get("id")!.toBytes().toHexString(),
+      "targettedBy",
     );
   }
 
   get authorityOf(): AccessManagedLoader {
     return new AccessManagedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "authorityOf"
+      this.get("id")!.toBytes().toHexString(),
+      "authorityOf",
     );
   }
 
   get operationCallerOf(): AccessManagedOperationLoader {
     return new AccessManagedOperationLoader(
       "Account",
-      this.get("id")!.toString(),
-      "operationCallerOf"
+      this.get("id")!.toBytes().toHexString(),
+      "operationCallerOf",
     );
   }
 
   get operationTargetOf(): AccessManagedOperationLoader {
     return new AccessManagedOperationLoader(
       "Account",
-      this.get("id")!.toString(),
-      "operationTargetOf"
+      this.get("id")!.toBytes().toHexString(),
+      "operationTargetOf",
     );
   }
 
   get operationExecutedSender(): OperationExecutedLoader {
     return new OperationExecutedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "operationExecutedSender"
+      this.get("id")!.toBytes().toHexString(),
+      "operationExecutedSender",
     );
   }
 
   get operationScheduledCaller(): OperationScheduledLoader {
     return new OperationScheduledLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "operationScheduledCaller"
+      this.get("id")!.toBytes().toHexString(),
+      "operationScheduledCaller",
     );
   }
 
   get operationScheduledTarget(): OperationScheduledLoader {
     return new OperationScheduledLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "operationScheduledTarget"
+      this.get("id")!.toBytes().toHexString(),
+      "operationScheduledTarget",
     );
   }
 
   get operationScheduledSender(): OperationScheduledLoader {
     return new OperationScheduledLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "operationScheduledSender"
+      this.get("id")!.toBytes().toHexString(),
+      "operationScheduledSender",
     );
   }
 
   get roleGranted(): RoleGrantedLoader {
     return new RoleGrantedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleGranted"
+      this.get("id")!.toBytes().toHexString(),
+      "roleGranted",
     );
   }
 
   get roleGrantedSender(): RoleGrantedLoader {
     return new RoleGrantedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleGrantedSender"
+      this.get("id")!.toBytes().toHexString(),
+      "roleGrantedSender",
     );
   }
 
   get roleAdminChangedSender(): RoleAdminChangedLoader {
     return new RoleAdminChangedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleAdminChangedSender"
+      this.get("id")!.toBytes().toHexString(),
+      "roleAdminChangedSender",
     );
   }
 
   get roleLabelSender(): RoleLabelLoader {
     return new RoleLabelLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleLabelSender"
+      this.get("id")!.toBytes().toHexString(),
+      "roleLabelSender",
     );
   }
 
   get roleRevoked(): RoleRevokedLoader {
     return new RoleRevokedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleRevoked"
+      this.get("id")!.toBytes().toHexString(),
+      "roleRevoked",
     );
   }
 
   get roleRevokedSender(): RoleRevokedLoader {
     return new RoleRevokedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleRevokedSender"
+      this.get("id")!.toBytes().toHexString(),
+      "roleRevokedSender",
     );
   }
 
   get targetAdminDelayUpdatedSender(): TargetAdminDelayUpdatedLoader {
     return new TargetAdminDelayUpdatedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "targetAdminDelayUpdatedSender"
+      this.get("id")!.toBytes().toHexString(),
+      "targetAdminDelayUpdatedSender",
     );
   }
 
   get targetClosed(): TargetClosedLoader {
     return new TargetClosedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "targetClosed"
+      this.get("id")!.toBytes().toHexString(),
+      "targetClosed",
     );
   }
 
   get targetClosedSender(): TargetClosedLoader {
     return new TargetClosedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "targetClosedSender"
+      this.get("id")!.toBytes().toHexString(),
+      "targetClosedSender",
     );
   }
 
   get targetFunctionRoleUpdated(): TargetFunctionRoleUpdatedLoader {
     return new TargetFunctionRoleUpdatedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "targetFunctionRoleUpdated"
+      this.get("id")!.toBytes().toHexString(),
+      "targetFunctionRoleUpdated",
     );
   }
 
   get targetFunctionRoleUpdatedSender(): TargetFunctionRoleUpdatedLoader {
     return new TargetFunctionRoleUpdatedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "targetFunctionRoleUpdatedSender"
+      this.get("id")!.toBytes().toHexString(),
+      "targetFunctionRoleUpdatedSender",
     );
   }
 
   get authorityUpdated(): AuthorityUpdatedLoader {
     return new AuthorityUpdatedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "authorityUpdated"
+      this.get("id")!.toBytes().toHexString(),
+      "authorityUpdated",
     );
   }
 
   get authorityUpdatedSender(): AuthorityUpdatedLoader {
     return new AuthorityUpdatedLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "authorityUpdatedSender"
+      this.get("id")!.toBytes().toHexString(),
+      "authorityUpdatedSender",
     );
   }
 
   get transactions(): TransactionLoader {
     return new TransactionLoader(
       "Account",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "transactions"
+      this.get("id")!.toBytes().toHexString(),
+      "transactions",
     );
   }
 }
@@ -321,7 +283,7 @@ export class Role extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        `Entities of type Role must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type Role must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("Role", id.toString(), this);
     }
@@ -352,97 +314,75 @@ export class Role extends Entity {
     return new AccessManagerRoleLoader(
       "Role",
       this.get("id")!.toString(),
-      "roleOf"
+      "roleOf",
     );
   }
 
   get targetFunctionRoleUpdated(): TargetFunctionRoleUpdatedLoader {
     return new TargetFunctionRoleUpdatedLoader(
       "Role",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "targetFunctionRoleUpdated"
+      this.get("id")!.toString(),
+      "targetFunctionRoleUpdated",
     );
   }
 
   get roleAdminChangedRole(): RoleAdminChangedLoader {
     return new RoleAdminChangedLoader(
       "Role",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleAdminChangedRole"
+      this.get("id")!.toString(),
+      "roleAdminChangedRole",
     );
   }
 
   get roleAdminChangedAdmin(): RoleAdminChangedLoader {
     return new RoleAdminChangedLoader(
       "Role",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleAdminChangedAdmin"
+      this.get("id")!.toString(),
+      "roleAdminChangedAdmin",
     );
   }
 
   get roleGrantDelayChanged(): RoleGrantDelayChangedLoader {
     return new RoleGrantDelayChangedLoader(
       "Role",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleGrantDelayChanged"
+      this.get("id")!.toString(),
+      "roleGrantDelayChanged",
     );
   }
 
   get roleGranted(): RoleGrantedLoader {
     return new RoleGrantedLoader(
       "Role",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleGranted"
+      this.get("id")!.toString(),
+      "roleGranted",
     );
   }
 
   get roleGuardianChangedRole(): RoleGuardianChangedLoader {
     return new RoleGuardianChangedLoader(
       "Role",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleGuardianChangedRole"
+      this.get("id")!.toString(),
+      "roleGuardianChangedRole",
     );
   }
 
   get roleGuardianChangedGuardian(): RoleGuardianChangedLoader {
     return new RoleGuardianChangedLoader(
       "Role",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleGuardianChangedGuardian"
+      this.get("id")!.toString(),
+      "roleGuardianChangedGuardian",
     );
   }
 
   get roleLabel(): RoleLabelLoader {
-    return new RoleLabelLoader(
-      "Role",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleLabel"
-    );
+    return new RoleLabelLoader("Role", this.get("id")!.toString(), "roleLabel");
   }
 
   get roleRevoked(): RoleRevokedLoader {
     return new RoleRevokedLoader(
       "Role",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "roleRevoked"
+      this.get("id")!.toString(),
+      "roleRevoked",
     );
   }
 }
@@ -459,7 +399,7 @@ export class Selector extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type Selector must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type Selector must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("Selector", id.toBytes().toHexString(), this);
     }
@@ -467,7 +407,7 @@ export class Selector extends Entity {
 
   static loadInBlock(id: Bytes): Selector | null {
     return changetype<Selector | null>(
-      store.get_in_block("Selector", id.toHexString())
+      store.get_in_block("Selector", id.toHexString()),
     );
   }
 
@@ -491,18 +431,16 @@ export class Selector extends Entity {
   get functionOf(): AccessManagerTargetFunctionLoader {
     return new AccessManagerTargetFunctionLoader(
       "Selector",
-      this.get("id")!.toString(),
-      "functionOf"
+      this.get("id")!.toBytes().toHexString(),
+      "functionOf",
     );
   }
 
   get targetFunctionRoleUpdated(): TargetFunctionRoleUpdatedLoader {
     return new TargetFunctionRoleUpdatedLoader(
       "Selector",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "targetFunctionRoleUpdated"
+      this.get("id")!.toBytes().toHexString(),
+      "targetFunctionRoleUpdated",
     );
   }
 }
@@ -519,7 +457,7 @@ export class Operation extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type Operation must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type Operation must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("Operation", id.toBytes().toHexString(), this);
     }
@@ -527,13 +465,13 @@ export class Operation extends Entity {
 
   static loadInBlock(id: Bytes): Operation | null {
     return changetype<Operation | null>(
-      store.get_in_block("Operation", id.toHexString())
+      store.get_in_block("Operation", id.toHexString()),
     );
   }
 
   static load(id: Bytes): Operation | null {
     return changetype<Operation | null>(
-      store.get("Operation", id.toHexString())
+      store.get("Operation", id.toHexString()),
     );
   }
 
@@ -553,38 +491,32 @@ export class Operation extends Entity {
   get operationOf(): AccessManagedOperationLoader {
     return new AccessManagedOperationLoader(
       "Operation",
-      this.get("id")!.toString(),
-      "operationOf"
+      this.get("id")!.toBytes().toHexString(),
+      "operationOf",
     );
   }
 
   get operationCanceled(): OperationCanceledLoader {
     return new OperationCanceledLoader(
       "Operation",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "operationCanceled"
+      this.get("id")!.toBytes().toHexString(),
+      "operationCanceled",
     );
   }
 
   get operationExecuted(): OperationExecutedLoader {
     return new OperationExecutedLoader(
       "Operation",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "operationExecuted"
+      this.get("id")!.toBytes().toHexString(),
+      "operationExecuted",
     );
   }
 
   get operationScheduled(): OperationScheduledLoader {
     return new OperationScheduledLoader(
       "Operation",
-      this.get("id")!
-        .toBytes()
-        .toHexString(),
-      "operationScheduled"
+      this.get("id")!.toBytes().toHexString(),
+      "operationScheduled",
     );
   }
 }
@@ -601,7 +533,7 @@ export class DelayedBigInt extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        `Entities of type DelayedBigInt must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type DelayedBigInt must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("DelayedBigInt", id.toString(), this);
     }
@@ -609,7 +541,7 @@ export class DelayedBigInt extends Entity {
 
   static loadInBlock(id: string): DelayedBigInt | null {
     return changetype<DelayedBigInt | null>(
-      store.get_in_block("DelayedBigInt", id)
+      store.get_in_block("DelayedBigInt", id),
     );
   }
 
@@ -682,7 +614,7 @@ export class Transaction extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type Transaction must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type Transaction must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("Transaction", id.toBytes().toHexString(), this);
     }
@@ -690,13 +622,13 @@ export class Transaction extends Entity {
 
   static loadInBlock(id: Bytes): Transaction | null {
     return changetype<Transaction | null>(
-      store.get_in_block("Transaction", id.toHexString())
+      store.get_in_block("Transaction", id.toHexString()),
     );
   }
 
   static load(id: Bytes): Transaction | null {
     return changetype<Transaction | null>(
-      store.get("Transaction", id.toHexString())
+      store.get("Transaction", id.toHexString()),
     );
   }
 
@@ -765,7 +697,7 @@ export class AccessManaged extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type AccessManaged must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type AccessManaged must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("AccessManaged", id.toBytes().toHexString(), this);
     }
@@ -773,13 +705,13 @@ export class AccessManaged extends Entity {
 
   static loadInBlock(id: Bytes): AccessManaged | null {
     return changetype<AccessManaged | null>(
-      store.get_in_block("AccessManaged", id.toHexString())
+      store.get_in_block("AccessManaged", id.toHexString()),
     );
   }
 
   static load(id: Bytes): AccessManaged | null {
     return changetype<AccessManaged | null>(
-      store.get("AccessManaged", id.toHexString())
+      store.get("AccessManaged", id.toHexString()),
     );
   }
 
@@ -835,7 +767,7 @@ export class AccessManager extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type AccessManager must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type AccessManager must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("AccessManager", id.toBytes().toHexString(), this);
     }
@@ -843,13 +775,13 @@ export class AccessManager extends Entity {
 
   static loadInBlock(id: Bytes): AccessManager | null {
     return changetype<AccessManager | null>(
-      store.get_in_block("AccessManager", id.toHexString())
+      store.get_in_block("AccessManager", id.toHexString()),
     );
   }
 
   static load(id: Bytes): AccessManager | null {
     return changetype<AccessManager | null>(
-      store.get("AccessManager", id.toHexString())
+      store.get("AccessManager", id.toHexString()),
     );
   }
 
@@ -882,40 +814,40 @@ export class AccessManager extends Entity {
   get targets(): AccessManagerTargetLoader {
     return new AccessManagerTargetLoader(
       "AccessManager",
-      this.get("id")!.toString(),
-      "targets"
+      this.get("id")!.toBytes().toHexString(),
+      "targets",
     );
   }
 
   get roles(): AccessManagerRoleLoader {
     return new AccessManagerRoleLoader(
       "AccessManager",
-      this.get("id")!.toString(),
-      "roles"
+      this.get("id")!.toBytes().toHexString(),
+      "roles",
     );
   }
 
   get members(): AccessManagerRoleMemberLoader {
     return new AccessManagerRoleMemberLoader(
       "AccessManager",
-      this.get("id")!.toString(),
-      "members"
+      this.get("id")!.toBytes().toHexString(),
+      "members",
     );
   }
 
   get functions(): AccessManagerTargetFunctionLoader {
     return new AccessManagerTargetFunctionLoader(
       "AccessManager",
-      this.get("id")!.toString(),
-      "functions"
+      this.get("id")!.toBytes().toHexString(),
+      "functions",
     );
   }
 
   get operations(): AccessManagedOperationLoader {
     return new AccessManagedOperationLoader(
       "AccessManager",
-      this.get("id")!.toString(),
-      "operations"
+      this.get("id")!.toBytes().toHexString(),
+      "operations",
     );
   }
 }
@@ -932,7 +864,7 @@ export class AccessManagerTarget extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        `Entities of type AccessManagerTarget must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type AccessManagerTarget must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("AccessManagerTarget", id.toString(), this);
     }
@@ -940,13 +872,13 @@ export class AccessManagerTarget extends Entity {
 
   static loadInBlock(id: string): AccessManagerTarget | null {
     return changetype<AccessManagerTarget | null>(
-      store.get_in_block("AccessManagerTarget", id)
+      store.get_in_block("AccessManagerTarget", id),
     );
   }
 
   static load(id: string): AccessManagerTarget | null {
     return changetype<AccessManagerTarget | null>(
-      store.get("AccessManagerTarget", id)
+      store.get("AccessManagerTarget", id),
     );
   }
 
@@ -1019,7 +951,7 @@ export class AccessManagerTarget extends Entity {
     return new AccessManagerTargetFunctionLoader(
       "AccessManagerTarget",
       this.get("id")!.toString(),
-      "functions"
+      "functions",
     );
   }
 }
@@ -1036,7 +968,7 @@ export class AccessManagerRole extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        `Entities of type AccessManagerRole must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type AccessManagerRole must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("AccessManagerRole", id.toString(), this);
     }
@@ -1044,13 +976,13 @@ export class AccessManagerRole extends Entity {
 
   static loadInBlock(id: string): AccessManagerRole | null {
     return changetype<AccessManagerRole | null>(
-      store.get_in_block("AccessManagerRole", id)
+      store.get_in_block("AccessManagerRole", id),
     );
   }
 
   static load(id: string): AccessManagerRole | null {
     return changetype<AccessManagerRole | null>(
-      store.get("AccessManagerRole", id)
+      store.get("AccessManagerRole", id),
     );
   }
 
@@ -1153,7 +1085,7 @@ export class AccessManagerRole extends Entity {
     return new AccessManagerRoleLoader(
       "AccessManagerRole",
       this.get("id")!.toString(),
-      "adminOf"
+      "adminOf",
     );
   }
 
@@ -1161,7 +1093,7 @@ export class AccessManagerRole extends Entity {
     return new AccessManagerRoleLoader(
       "AccessManagerRole",
       this.get("id")!.toString(),
-      "guardianOf"
+      "guardianOf",
     );
   }
 
@@ -1169,7 +1101,7 @@ export class AccessManagerRole extends Entity {
     return new AccessManagerRoleMemberLoader(
       "AccessManagerRole",
       this.get("id")!.toString(),
-      "members"
+      "members",
     );
   }
 
@@ -1177,7 +1109,7 @@ export class AccessManagerRole extends Entity {
     return new AccessManagerTargetFunctionLoader(
       "AccessManagerRole",
       this.get("id")!.toString(),
-      "functions"
+      "functions",
     );
   }
 }
@@ -1192,12 +1124,12 @@ export class AccessManagerRoleMember extends Entity {
     let id = this.get("id");
     assert(
       id != null,
-      "Cannot save AccessManagerRoleMember entity without an ID"
+      "Cannot save AccessManagerRoleMember entity without an ID",
     );
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        `Entities of type AccessManagerRoleMember must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type AccessManagerRoleMember must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("AccessManagerRoleMember", id.toString(), this);
     }
@@ -1205,13 +1137,13 @@ export class AccessManagerRoleMember extends Entity {
 
   static loadInBlock(id: string): AccessManagerRoleMember | null {
     return changetype<AccessManagerRoleMember | null>(
-      store.get_in_block("AccessManagerRoleMember", id)
+      store.get_in_block("AccessManagerRoleMember", id),
     );
   }
 
   static load(id: string): AccessManagerRoleMember | null {
     return changetype<AccessManagerRoleMember | null>(
-      store.get("AccessManagerRoleMember", id)
+      store.get("AccessManagerRoleMember", id),
     );
   }
 
@@ -1304,12 +1236,12 @@ export class AccessManagerTargetFunction extends Entity {
     let id = this.get("id");
     assert(
       id != null,
-      "Cannot save AccessManagerTargetFunction entity without an ID"
+      "Cannot save AccessManagerTargetFunction entity without an ID",
     );
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        `Entities of type AccessManagerTargetFunction must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type AccessManagerTargetFunction must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("AccessManagerTargetFunction", id.toString(), this);
     }
@@ -1317,13 +1249,13 @@ export class AccessManagerTargetFunction extends Entity {
 
   static loadInBlock(id: string): AccessManagerTargetFunction | null {
     return changetype<AccessManagerTargetFunction | null>(
-      store.get_in_block("AccessManagerTargetFunction", id)
+      store.get_in_block("AccessManagerTargetFunction", id),
     );
   }
 
   static load(id: string): AccessManagerTargetFunction | null {
     return changetype<AccessManagerTargetFunction | null>(
-      store.get("AccessManagerTargetFunction", id)
+      store.get("AccessManagerTargetFunction", id),
     );
   }
 
@@ -1403,12 +1335,12 @@ export class AccessManagedOperation extends Entity {
     let id = this.get("id");
     assert(
       id != null,
-      "Cannot save AccessManagedOperation entity without an ID"
+      "Cannot save AccessManagedOperation entity without an ID",
     );
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        `Entities of type AccessManagedOperation must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type AccessManagedOperation must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("AccessManagedOperation", id.toString(), this);
     }
@@ -1416,13 +1348,13 @@ export class AccessManagedOperation extends Entity {
 
   static loadInBlock(id: string): AccessManagedOperation | null {
     return changetype<AccessManagedOperation | null>(
-      store.get_in_block("AccessManagedOperation", id)
+      store.get_in_block("AccessManagedOperation", id),
     );
   }
 
   static load(id: string): AccessManagedOperation | null {
     return changetype<AccessManagedOperation | null>(
-      store.get("AccessManagedOperation", id)
+      store.get("AccessManagedOperation", id),
     );
   }
 
@@ -1556,7 +1488,7 @@ export class OperationCanceled extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type OperationCanceled must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type OperationCanceled must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("OperationCanceled", id.toBytes().toHexString(), this);
     }
@@ -1564,13 +1496,13 @@ export class OperationCanceled extends Entity {
 
   static loadInBlock(id: Bytes): OperationCanceled | null {
     return changetype<OperationCanceled | null>(
-      store.get_in_block("OperationCanceled", id.toHexString())
+      store.get_in_block("OperationCanceled", id.toHexString()),
     );
   }
 
   static load(id: Bytes): OperationCanceled | null {
     return changetype<OperationCanceled | null>(
-      store.get("OperationCanceled", id.toHexString())
+      store.get("OperationCanceled", id.toHexString()),
     );
   }
 
@@ -1678,7 +1610,7 @@ export class OperationExecuted extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type OperationExecuted must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type OperationExecuted must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("OperationExecuted", id.toBytes().toHexString(), this);
     }
@@ -1686,13 +1618,13 @@ export class OperationExecuted extends Entity {
 
   static loadInBlock(id: Bytes): OperationExecuted | null {
     return changetype<OperationExecuted | null>(
-      store.get_in_block("OperationExecuted", id.toHexString())
+      store.get_in_block("OperationExecuted", id.toHexString()),
     );
   }
 
   static load(id: Bytes): OperationExecuted | null {
     return changetype<OperationExecuted | null>(
-      store.get("OperationExecuted", id.toHexString())
+      store.get("OperationExecuted", id.toHexString()),
     );
   }
 
@@ -1800,7 +1732,7 @@ export class OperationScheduled extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type OperationScheduled must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type OperationScheduled must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("OperationScheduled", id.toBytes().toHexString(), this);
     }
@@ -1808,13 +1740,13 @@ export class OperationScheduled extends Entity {
 
   static loadInBlock(id: Bytes): OperationScheduled | null {
     return changetype<OperationScheduled | null>(
-      store.get_in_block("OperationScheduled", id.toHexString())
+      store.get_in_block("OperationScheduled", id.toHexString()),
     );
   }
 
   static load(id: Bytes): OperationScheduled | null {
     return changetype<OperationScheduled | null>(
-      store.get("OperationScheduled", id.toHexString())
+      store.get("OperationScheduled", id.toHexString()),
     );
   }
 
@@ -1974,7 +1906,7 @@ export class RoleAdminChanged extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type RoleAdminChanged must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type RoleAdminChanged must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("RoleAdminChanged", id.toBytes().toHexString(), this);
     }
@@ -1982,13 +1914,13 @@ export class RoleAdminChanged extends Entity {
 
   static loadInBlock(id: Bytes): RoleAdminChanged | null {
     return changetype<RoleAdminChanged | null>(
-      store.get_in_block("RoleAdminChanged", id.toHexString())
+      store.get_in_block("RoleAdminChanged", id.toHexString()),
     );
   }
 
   static load(id: Bytes): RoleAdminChanged | null {
     return changetype<RoleAdminChanged | null>(
-      store.get("RoleAdminChanged", id.toHexString())
+      store.get("RoleAdminChanged", id.toHexString()),
     );
   }
 
@@ -2094,12 +2026,12 @@ export class RoleGrantDelayChanged extends Entity {
     let id = this.get("id");
     assert(
       id != null,
-      "Cannot save RoleGrantDelayChanged entity without an ID"
+      "Cannot save RoleGrantDelayChanged entity without an ID",
     );
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type RoleGrantDelayChanged must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type RoleGrantDelayChanged must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("RoleGrantDelayChanged", id.toBytes().toHexString(), this);
     }
@@ -2107,13 +2039,13 @@ export class RoleGrantDelayChanged extends Entity {
 
   static loadInBlock(id: Bytes): RoleGrantDelayChanged | null {
     return changetype<RoleGrantDelayChanged | null>(
-      store.get_in_block("RoleGrantDelayChanged", id.toHexString())
+      store.get_in_block("RoleGrantDelayChanged", id.toHexString()),
     );
   }
 
   static load(id: Bytes): RoleGrantDelayChanged | null {
     return changetype<RoleGrantDelayChanged | null>(
-      store.get("RoleGrantDelayChanged", id.toHexString())
+      store.get("RoleGrantDelayChanged", id.toHexString()),
     );
   }
 
@@ -2234,7 +2166,7 @@ export class RoleGranted extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type RoleGranted must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type RoleGranted must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("RoleGranted", id.toBytes().toHexString(), this);
     }
@@ -2242,13 +2174,13 @@ export class RoleGranted extends Entity {
 
   static loadInBlock(id: Bytes): RoleGranted | null {
     return changetype<RoleGranted | null>(
-      store.get_in_block("RoleGranted", id.toHexString())
+      store.get_in_block("RoleGranted", id.toHexString()),
     );
   }
 
   static load(id: Bytes): RoleGranted | null {
     return changetype<RoleGranted | null>(
-      store.get("RoleGranted", id.toHexString())
+      store.get("RoleGranted", id.toHexString()),
     );
   }
 
@@ -2395,7 +2327,7 @@ export class RoleGuardianChanged extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type RoleGuardianChanged must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type RoleGuardianChanged must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("RoleGuardianChanged", id.toBytes().toHexString(), this);
     }
@@ -2403,13 +2335,13 @@ export class RoleGuardianChanged extends Entity {
 
   static loadInBlock(id: Bytes): RoleGuardianChanged | null {
     return changetype<RoleGuardianChanged | null>(
-      store.get_in_block("RoleGuardianChanged", id.toHexString())
+      store.get_in_block("RoleGuardianChanged", id.toHexString()),
     );
   }
 
   static load(id: Bytes): RoleGuardianChanged | null {
     return changetype<RoleGuardianChanged | null>(
-      store.get("RoleGuardianChanged", id.toHexString())
+      store.get("RoleGuardianChanged", id.toHexString()),
     );
   }
 
@@ -2517,7 +2449,7 @@ export class RoleLabel extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type RoleLabel must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type RoleLabel must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("RoleLabel", id.toBytes().toHexString(), this);
     }
@@ -2525,13 +2457,13 @@ export class RoleLabel extends Entity {
 
   static loadInBlock(id: Bytes): RoleLabel | null {
     return changetype<RoleLabel | null>(
-      store.get_in_block("RoleLabel", id.toHexString())
+      store.get_in_block("RoleLabel", id.toHexString()),
     );
   }
 
   static load(id: Bytes): RoleLabel | null {
     return changetype<RoleLabel | null>(
-      store.get("RoleLabel", id.toHexString())
+      store.get("RoleLabel", id.toHexString()),
     );
   }
 
@@ -2639,7 +2571,7 @@ export class RoleRevoked extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type RoleRevoked must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type RoleRevoked must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("RoleRevoked", id.toBytes().toHexString(), this);
     }
@@ -2647,13 +2579,13 @@ export class RoleRevoked extends Entity {
 
   static loadInBlock(id: Bytes): RoleRevoked | null {
     return changetype<RoleRevoked | null>(
-      store.get_in_block("RoleRevoked", id.toHexString())
+      store.get_in_block("RoleRevoked", id.toHexString()),
     );
   }
 
   static load(id: Bytes): RoleRevoked | null {
     return changetype<RoleRevoked | null>(
-      store.get("RoleRevoked", id.toHexString())
+      store.get("RoleRevoked", id.toHexString()),
     );
   }
 
@@ -2759,12 +2691,12 @@ export class TargetAdminDelayUpdated extends Entity {
     let id = this.get("id");
     assert(
       id != null,
-      "Cannot save TargetAdminDelayUpdated entity without an ID"
+      "Cannot save TargetAdminDelayUpdated entity without an ID",
     );
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type TargetAdminDelayUpdated must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type TargetAdminDelayUpdated must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("TargetAdminDelayUpdated", id.toBytes().toHexString(), this);
     }
@@ -2772,13 +2704,13 @@ export class TargetAdminDelayUpdated extends Entity {
 
   static loadInBlock(id: Bytes): TargetAdminDelayUpdated | null {
     return changetype<TargetAdminDelayUpdated | null>(
-      store.get_in_block("TargetAdminDelayUpdated", id.toHexString())
+      store.get_in_block("TargetAdminDelayUpdated", id.toHexString()),
     );
   }
 
   static load(id: Bytes): TargetAdminDelayUpdated | null {
     return changetype<TargetAdminDelayUpdated | null>(
-      store.get("TargetAdminDelayUpdated", id.toHexString())
+      store.get("TargetAdminDelayUpdated", id.toHexString()),
     );
   }
 
@@ -2899,7 +2831,7 @@ export class TargetClosed extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type TargetClosed must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type TargetClosed must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("TargetClosed", id.toBytes().toHexString(), this);
     }
@@ -2907,13 +2839,13 @@ export class TargetClosed extends Entity {
 
   static loadInBlock(id: Bytes): TargetClosed | null {
     return changetype<TargetClosed | null>(
-      store.get_in_block("TargetClosed", id.toHexString())
+      store.get_in_block("TargetClosed", id.toHexString()),
     );
   }
 
   static load(id: Bytes): TargetClosed | null {
     return changetype<TargetClosed | null>(
-      store.get("TargetClosed", id.toHexString())
+      store.get("TargetClosed", id.toHexString()),
     );
   }
 
@@ -3019,12 +2951,12 @@ export class TargetFunctionRoleUpdated extends Entity {
     let id = this.get("id");
     assert(
       id != null,
-      "Cannot save TargetFunctionRoleUpdated entity without an ID"
+      "Cannot save TargetFunctionRoleUpdated entity without an ID",
     );
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type TargetFunctionRoleUpdated must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type TargetFunctionRoleUpdated must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("TargetFunctionRoleUpdated", id.toBytes().toHexString(), this);
     }
@@ -3032,13 +2964,13 @@ export class TargetFunctionRoleUpdated extends Entity {
 
   static loadInBlock(id: Bytes): TargetFunctionRoleUpdated | null {
     return changetype<TargetFunctionRoleUpdated | null>(
-      store.get_in_block("TargetFunctionRoleUpdated", id.toHexString())
+      store.get_in_block("TargetFunctionRoleUpdated", id.toHexString()),
     );
   }
 
   static load(id: Bytes): TargetFunctionRoleUpdated | null {
     return changetype<TargetFunctionRoleUpdated | null>(
-      store.get("TargetFunctionRoleUpdated", id.toHexString())
+      store.get("TargetFunctionRoleUpdated", id.toHexString()),
     );
   }
 
@@ -3159,7 +3091,7 @@ export class AuthorityUpdated extends Entity {
     if (id) {
       assert(
         id.kind == ValueKind.BYTES,
-        `Entities of type AuthorityUpdated must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type AuthorityUpdated must have an ID of type Bytes but the id '${id.displayData()}' is of type ${id.displayKind()}`,
       );
       store.set("AuthorityUpdated", id.toBytes().toHexString(), this);
     }
@@ -3167,13 +3099,13 @@ export class AuthorityUpdated extends Entity {
 
   static loadInBlock(id: Bytes): AuthorityUpdated | null {
     return changetype<AuthorityUpdated | null>(
-      store.get_in_block("AuthorityUpdated", id.toHexString())
+      store.get_in_block("AuthorityUpdated", id.toHexString()),
     );
   }
 
   static load(id: Bytes): AuthorityUpdated | null {
     return changetype<AuthorityUpdated | null>(
-      store.get("AuthorityUpdated", id.toHexString())
+      store.get("AuthorityUpdated", id.toHexString()),
     );
   }
 

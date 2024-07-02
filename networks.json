@@ -9,74 +9,74 @@
   },
   "sepolia": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 4400000
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 4400000
     }
   },
   "optimism": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 110400000
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 110400000
     }
   },
   "optimism-sepolia": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 2300000
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 2300000
     }
   },
   "bsc": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 32300000
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 32300000
     }
   },
   "chapel": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 33900000
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 33900000
     }
   },
   "matic": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 48300000
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 48300000
     }
   },
   "fantom": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 69000000
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 69000000
     }
   },
   "arbitrum-one": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 137000000
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 137000000
     }
   },
   "fuji": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 26400000
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 26400000
     }
   },
   "avalanche": {
@@ -89,10 +89,10 @@
   },
   "base": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 4800000
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 4800000
     }
   },
   "base-sepolia": {
@@ -105,42 +105,42 @@
   },
   "polygon-zkevm": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 5900000
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 5900000
     }
   },
   "arbitrum-sepolia": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 540000
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 540000
     }
   },
   "blast-mainnet": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 0
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 0
     }
   },
   "blast-testnet": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 0
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 0
     }
   },
   "polygon-amoy": {
     "AccessManager": {
-      "startBlock": 36000000
+      "startBlock": 1
     },
     "AccessManaged": {
-      "startBlock": 36000000
+      "startBlock": 1
     }
   }
 }

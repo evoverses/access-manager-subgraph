@@ -7,7 +7,7 @@ import {
   Entity,
   Bytes,
   Address,
-  BigInt
+  BigInt,
 } from "@graphprotocol/graph-ts";
 
 export class OperationCanceled extends ethereum.Event {
@@ -466,7 +466,7 @@ export class AccessManager extends ethereum.SmartContract {
   canCall(
     caller: Address,
     target: Address,
-    selector: Bytes
+    selector: Bytes,
   ): AccessManager__canCallResult {
     let result = super.call(
       "canCall",
@@ -474,20 +474,20 @@ export class AccessManager extends ethereum.SmartContract {
       [
         ethereum.Value.fromAddress(caller),
         ethereum.Value.fromAddress(target),
-        ethereum.Value.fromFixedBytes(selector)
-      ]
+        ethereum.Value.fromFixedBytes(selector),
+      ],
     );
 
     return new AccessManager__canCallResult(
       result[0].toBoolean(),
-      result[1].toBigInt()
+      result[1].toBigInt(),
     );
   }
 
   try_canCall(
     caller: Address,
     target: Address,
-    selector: Bytes
+    selector: Bytes,
   ): ethereum.CallResult<AccessManager__canCallResult> {
     let result = super.tryCall(
       "canCall",
@@ -495,8 +495,8 @@ export class AccessManager extends ethereum.SmartContract {
       [
         ethereum.Value.fromAddress(caller),
         ethereum.Value.fromAddress(target),
-        ethereum.Value.fromFixedBytes(selector)
-      ]
+        ethereum.Value.fromFixedBytes(selector),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -505,8 +505,8 @@ export class AccessManager extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(
       new AccessManager__canCallResult(
         value[0].toBoolean(),
-        value[1].toBigInt()
-      )
+        value[1].toBigInt(),
+      ),
     );
   }
 
@@ -517,8 +517,8 @@ export class AccessManager extends ethereum.SmartContract {
       [
         ethereum.Value.fromAddress(caller),
         ethereum.Value.fromAddress(target),
-        ethereum.Value.fromBytes(data)
-      ]
+        ethereum.Value.fromBytes(data),
+      ],
     );
 
     return result[0].toBigInt();
@@ -527,7 +527,7 @@ export class AccessManager extends ethereum.SmartContract {
   try_cancel(
     caller: Address,
     target: Address,
-    data: Bytes
+    data: Bytes,
   ): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
       "cancel",
@@ -535,8 +535,8 @@ export class AccessManager extends ethereum.SmartContract {
       [
         ethereum.Value.fromAddress(caller),
         ethereum.Value.fromAddress(target),
-        ethereum.Value.fromBytes(data)
-      ]
+        ethereum.Value.fromBytes(data),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -566,29 +566,29 @@ export class AccessManager extends ethereum.SmartContract {
       "getAccess(uint64,address):(uint48,uint32,uint32,uint48)",
       [
         ethereum.Value.fromUnsignedBigInt(roleId),
-        ethereum.Value.fromAddress(account)
-      ]
+        ethereum.Value.fromAddress(account),
+      ],
     );
 
     return new AccessManager__getAccessResult(
       result[0].toBigInt(),
       result[1].toBigInt(),
       result[2].toBigInt(),
-      result[3].toBigInt()
+      result[3].toBigInt(),
     );
   }
 
   try_getAccess(
     roleId: BigInt,
-    account: Address
+    account: Address,
   ): ethereum.CallResult<AccessManager__getAccessResult> {
     let result = super.tryCall(
       "getAccess",
       "getAccess(uint64,address):(uint48,uint32,uint32,uint48)",
       [
         ethereum.Value.fromUnsignedBigInt(roleId),
-        ethereum.Value.fromAddress(account)
-      ]
+        ethereum.Value.fromAddress(account),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -599,14 +599,14 @@ export class AccessManager extends ethereum.SmartContract {
         value[0].toBigInt(),
         value[1].toBigInt(),
         value[2].toBigInt(),
-        value[3].toBigInt()
-      )
+        value[3].toBigInt(),
+      ),
     );
   }
 
   getNonce(id: Bytes): BigInt {
     let result = super.call("getNonce", "getNonce(bytes32):(uint32)", [
-      ethereum.Value.fromFixedBytes(id)
+      ethereum.Value.fromFixedBytes(id),
     ]);
 
     return result[0].toBigInt();
@@ -614,7 +614,7 @@ export class AccessManager extends ethereum.SmartContract {
 
   try_getNonce(id: Bytes): ethereum.CallResult<BigInt> {
     let result = super.tryCall("getNonce", "getNonce(bytes32):(uint32)", [
-      ethereum.Value.fromFixedBytes(id)
+      ethereum.Value.fromFixedBytes(id),
     ]);
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -625,7 +625,7 @@ export class AccessManager extends ethereum.SmartContract {
 
   getRoleAdmin(roleId: BigInt): BigInt {
     let result = super.call("getRoleAdmin", "getRoleAdmin(uint64):(uint64)", [
-      ethereum.Value.fromUnsignedBigInt(roleId)
+      ethereum.Value.fromUnsignedBigInt(roleId),
     ]);
 
     return result[0].toBigInt();
@@ -635,7 +635,7 @@ export class AccessManager extends ethereum.SmartContract {
     let result = super.tryCall(
       "getRoleAdmin",
       "getRoleAdmin(uint64):(uint64)",
-      [ethereum.Value.fromUnsignedBigInt(roleId)]
+      [ethereum.Value.fromUnsignedBigInt(roleId)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -648,7 +648,7 @@ export class AccessManager extends ethereum.SmartContract {
     let result = super.call(
       "getRoleGrantDelay",
       "getRoleGrantDelay(uint64):(uint32)",
-      [ethereum.Value.fromUnsignedBigInt(roleId)]
+      [ethereum.Value.fromUnsignedBigInt(roleId)],
     );
 
     return result[0].toBigInt();
@@ -658,7 +658,7 @@ export class AccessManager extends ethereum.SmartContract {
     let result = super.tryCall(
       "getRoleGrantDelay",
       "getRoleGrantDelay(uint64):(uint32)",
-      [ethereum.Value.fromUnsignedBigInt(roleId)]
+      [ethereum.Value.fromUnsignedBigInt(roleId)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -671,7 +671,7 @@ export class AccessManager extends ethereum.SmartContract {
     let result = super.call(
       "getRoleGuardian",
       "getRoleGuardian(uint64):(uint64)",
-      [ethereum.Value.fromUnsignedBigInt(roleId)]
+      [ethereum.Value.fromUnsignedBigInt(roleId)],
     );
 
     return result[0].toBigInt();
@@ -681,7 +681,7 @@ export class AccessManager extends ethereum.SmartContract {
     let result = super.tryCall(
       "getRoleGuardian",
       "getRoleGuardian(uint64):(uint64)",
-      [ethereum.Value.fromUnsignedBigInt(roleId)]
+      [ethereum.Value.fromUnsignedBigInt(roleId)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -692,7 +692,7 @@ export class AccessManager extends ethereum.SmartContract {
 
   getSchedule(id: Bytes): BigInt {
     let result = super.call("getSchedule", "getSchedule(bytes32):(uint48)", [
-      ethereum.Value.fromFixedBytes(id)
+      ethereum.Value.fromFixedBytes(id),
     ]);
 
     return result[0].toBigInt();
@@ -700,7 +700,7 @@ export class AccessManager extends ethereum.SmartContract {
 
   try_getSchedule(id: Bytes): ethereum.CallResult<BigInt> {
     let result = super.tryCall("getSchedule", "getSchedule(bytes32):(uint48)", [
-      ethereum.Value.fromFixedBytes(id)
+      ethereum.Value.fromFixedBytes(id),
     ]);
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -713,7 +713,7 @@ export class AccessManager extends ethereum.SmartContract {
     let result = super.call(
       "getTargetAdminDelay",
       "getTargetAdminDelay(address):(uint32)",
-      [ethereum.Value.fromAddress(target)]
+      [ethereum.Value.fromAddress(target)],
     );
 
     return result[0].toBigInt();
@@ -723,7 +723,7 @@ export class AccessManager extends ethereum.SmartContract {
     let result = super.tryCall(
       "getTargetAdminDelay",
       "getTargetAdminDelay(address):(uint32)",
-      [ethereum.Value.fromAddress(target)]
+      [ethereum.Value.fromAddress(target)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -738,8 +738,8 @@ export class AccessManager extends ethereum.SmartContract {
       "getTargetFunctionRole(address,bytes4):(uint64)",
       [
         ethereum.Value.fromAddress(target),
-        ethereum.Value.fromFixedBytes(selector)
-      ]
+        ethereum.Value.fromFixedBytes(selector),
+      ],
     );
 
     return result[0].toBigInt();
@@ -747,15 +747,15 @@ export class AccessManager extends ethereum.SmartContract {
 
   try_getTargetFunctionRole(
     target: Address,
-    selector: Bytes
+    selector: Bytes,
   ): ethereum.CallResult<BigInt> {
     let result = super.tryCall(
       "getTargetFunctionRole",
       "getTargetFunctionRole(address,bytes4):(uint64)",
       [
         ethereum.Value.fromAddress(target),
-        ethereum.Value.fromFixedBytes(selector)
-      ]
+        ethereum.Value.fromFixedBytes(selector),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -770,27 +770,27 @@ export class AccessManager extends ethereum.SmartContract {
       "hasRole(uint64,address):(bool,uint32)",
       [
         ethereum.Value.fromUnsignedBigInt(roleId),
-        ethereum.Value.fromAddress(account)
-      ]
+        ethereum.Value.fromAddress(account),
+      ],
     );
 
     return new AccessManager__hasRoleResult(
       result[0].toBoolean(),
-      result[1].toBigInt()
+      result[1].toBigInt(),
     );
   }
 
   try_hasRole(
     roleId: BigInt,
-    account: Address
+    account: Address,
   ): ethereum.CallResult<AccessManager__hasRoleResult> {
     let result = super.tryCall(
       "hasRole",
       "hasRole(uint64,address):(bool,uint32)",
       [
         ethereum.Value.fromUnsignedBigInt(roleId),
-        ethereum.Value.fromAddress(account)
-      ]
+        ethereum.Value.fromAddress(account),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -799,8 +799,8 @@ export class AccessManager extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(
       new AccessManager__hasRoleResult(
         value[0].toBoolean(),
-        value[1].toBigInt()
-      )
+        value[1].toBigInt(),
+      ),
     );
   }
 
@@ -811,8 +811,8 @@ export class AccessManager extends ethereum.SmartContract {
       [
         ethereum.Value.fromAddress(caller),
         ethereum.Value.fromAddress(target),
-        ethereum.Value.fromBytes(data)
-      ]
+        ethereum.Value.fromBytes(data),
+      ],
     );
 
     return result[0].toBytes();
@@ -821,7 +821,7 @@ export class AccessManager extends ethereum.SmartContract {
   try_hashOperation(
     caller: Address,
     target: Address,
-    data: Bytes
+    data: Bytes,
   ): ethereum.CallResult<Bytes> {
     let result = super.tryCall(
       "hashOperation",
@@ -829,8 +829,8 @@ export class AccessManager extends ethereum.SmartContract {
       [
         ethereum.Value.fromAddress(caller),
         ethereum.Value.fromAddress(target),
-        ethereum.Value.fromBytes(data)
-      ]
+        ethereum.Value.fromBytes(data),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -843,7 +843,7 @@ export class AccessManager extends ethereum.SmartContract {
     let result = super.call(
       "isTargetClosed",
       "isTargetClosed(address):(bool)",
-      [ethereum.Value.fromAddress(target)]
+      [ethereum.Value.fromAddress(target)],
     );
 
     return result[0].toBoolean();
@@ -853,7 +853,7 @@ export class AccessManager extends ethereum.SmartContract {
     let result = super.tryCall(
       "isTargetClosed",
       "isTargetClosed(address):(bool)",
-      [ethereum.Value.fromAddress(target)]
+      [ethereum.Value.fromAddress(target)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -879,7 +879,7 @@ export class AccessManager extends ethereum.SmartContract {
 
   multicall(data: Array<Bytes>): Array<Bytes> {
     let result = super.call("multicall", "multicall(bytes[]):(bytes[])", [
-      ethereum.Value.fromBytesArray(data)
+      ethereum.Value.fromBytesArray(data),
     ]);
 
     return result[0].toBytesArray();
@@ -887,7 +887,7 @@ export class AccessManager extends ethereum.SmartContract {
 
   try_multicall(data: Array<Bytes>): ethereum.CallResult<Array<Bytes>> {
     let result = super.tryCall("multicall", "multicall(bytes[]):(bytes[])", [
-      ethereum.Value.fromBytesArray(data)
+      ethereum.Value.fromBytesArray(data),
     ]);
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -899,7 +899,7 @@ export class AccessManager extends ethereum.SmartContract {
   schedule(
     target: Address,
     data: Bytes,
-    when: BigInt
+    when: BigInt,
   ): AccessManager__scheduleResult {
     let result = super.call(
       "schedule",
@@ -907,20 +907,20 @@ export class AccessManager extends ethereum.SmartContract {
       [
         ethereum.Value.fromAddress(target),
         ethereum.Value.fromBytes(data),
-        ethereum.Value.fromUnsignedBigInt(when)
-      ]
+        ethereum.Value.fromUnsignedBigInt(when),
+      ],
     );
 
     return new AccessManager__scheduleResult(
       result[0].toBytes(),
-      result[1].toBigInt()
+      result[1].toBigInt(),
     );
   }
 
   try_schedule(
     target: Address,
     data: Bytes,
-    when: BigInt
+    when: BigInt,
   ): ethereum.CallResult<AccessManager__scheduleResult> {
     let result = super.tryCall(
       "schedule",
@@ -928,15 +928,18 @@ export class AccessManager extends ethereum.SmartContract {
       [
         ethereum.Value.fromAddress(target),
         ethereum.Value.fromBytes(data),
-        ethereum.Value.fromUnsignedBigInt(when)
-      ]
+        ethereum.Value.fromUnsignedBigInt(when),
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(
-      new AccessManager__scheduleResult(value[0].toBytes(), value[1].toBigInt())
+      new AccessManager__scheduleResult(
+        value[0].toBytes(),
+        value[1].toBigInt(),
+      ),
     );
   }
 }

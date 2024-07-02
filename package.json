@@ -4,8 +4,8 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --studio --version-label v1.0.1",
-    "deploy:ethereum": "npm run deploy -- --network sepolia access-manager-mainnet",
+    "deploy": "graph deploy --studio --version-label v1.0.2",
+    "deploy:ethereum": "npm run deploy -- --network mainnet access-manager-mainnet",
     "deploy:sepolia": "npm run deploy -- --network sepolia access-manager-sepolia",
     "deploy:optimism": "npm run deploy -- --network optimism access-manager-optimism",
     "deploy:optimism-sepolia": "npm run deploy -- --network optimism-sepolia access-manager-op-sepolia",
@@ -29,8 +29,8 @@
     "test": "graph test"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.59.0",
-    "@graphprotocol/graph-ts": "0.30.0"
+    "@graphprotocol/graph-cli": "0.78.0",
+    "@graphprotocol/graph-ts": "0.35.1"
   },
   "devDependencies": {
     "matchstick-as": "0.5.0"

@@ -4,10 +4,10 @@ schema:
 dataSources:
   - kind: ethereum
     name: AccessManager
-    network: base-sepolia
+    network: blast-testnet
     source:
       abi: AccessManager
-      startBlock: 300000
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -57,10 +57,10 @@ dataSources:
       file: ./src/datasources/AccessManager.ts
   - kind: ethereum
     name: AccessManaged
-    network: base-sepolia
+    network: blast-testnet
     source:
       abi: AccessManaged
-      startBlock: 300000
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

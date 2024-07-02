@@ -7,7 +7,7 @@ import {
   Entity,
   Bytes,
   Address,
-  BigInt
+  BigInt,
 } from "@graphprotocol/graph-ts";
 
 export class AuthorityUpdated extends ethereum.Event {
@@ -52,7 +52,7 @@ export class AccessManaged extends ethereum.SmartContract {
     let result = super.call(
       "isConsumingScheduledOp",
       "isConsumingScheduledOp():(bytes4)",
-      []
+      [],
     );
 
     return result[0].toBytes();
@@ -62,7 +62,7 @@ export class AccessManaged extends ethereum.SmartContract {
     let result = super.tryCall(
       "isConsumingScheduledOp",
       "isConsumingScheduledOp():(bytes4)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
